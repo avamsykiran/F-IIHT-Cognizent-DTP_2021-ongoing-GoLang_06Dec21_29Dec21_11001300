@@ -260,14 +260,13 @@ Non-Conditional Control Statements
                 var nums = [5]int{1,2,3,4,5}
 
                 len(array)              number of eles
-                cap(array)              saem as Len
+                cap(array)              same as Len
 
                 nums[4] ----------> 5
 
                 range           this is keyword that returns 
                                         the index and ele from the 
                                         givne array until no more eles are left.
-
 
         Slice
         ------------------------------------------------------------
