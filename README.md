@@ -284,9 +284,57 @@ Non-Conditional Control Statements
         Assignments
         ----------------------------------------
         Bubble Sort
+                           10  5   7   19   8   4   6
+
+                10 - 5      5   10  7   19   8   4   6
+                10 - 7      5   7   10  19   8   4   6   
+                10 - 19     5   7   10  19   8   4   6
+                19 - 8      5   7   10   8  19   4   6
+                19 - 4      5   7   10   8   4  19   6
+                19 - 6      5   7   10   8   4   6  19
+
+                repeat for 5   7   10   8   4   6
+
         Selection Sort
+
+                            10  5   7   19   8   4   6
+
+                        selected the ele '10'
+
+                10 - 5          no swap needed
+                10 - 7          no swap needed
+                10 - 19     19  5   7   10   8   4   6
+
+                        repeat the same with all other ele!
+
+                repeat for 5   7   10   8   4   6
+
         Quick Sort              //recurisve funcitons
-        Binary Search
+                                  0  1   2   3    4   5   6      
+                                 10  5   7   19   8   4   6
+                                 d                        u
+
+                10 == @d (10)        d  
+                10 > @d (5)              d 
+                10 > @d (7)                   d 
+                10 < @d (19)                  d
+
+                10 > @u (6)                                u
+
+                d (3) < u (6)             
+                                  0  1   2   3   4   5   6      
+                                 10  5   7   6   8   4    19
+                                             d             u
+                10 > @d (6)                      d
+                10 > @d (8)                          d
+                10 > @d (5)                                d
+                10 < @d (19)                               d
+
+                10 < @u (19)                         u
+                10 > @u (5)                          u
+
+                d (6) > u (5)
+                                4 5 7 6 8 --- 10 --- 19
 
         RegExp
         ---------------------------------------------------
