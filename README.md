@@ -400,8 +400,7 @@ Non-Conditional Control Statements
                                 r:0.10
                         }
 
-                        var l4 loan = loan{1000,10,10,0}
-
+                        var l4 loan = loan{1000,10,10.0}
 
                         Anonymous Fields / members
                         ----------------------------
@@ -434,7 +433,7 @@ Non-Conditional Control Statements
                         Nested Structures / Embeded Structres
                         ------------------------------------------------
 
-                                as an a excersise for compositon/inheretence
+                                as an a excersise for composition/inheretence
 
                                 type str1 struct{
                                         f1 int
