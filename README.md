@@ -618,6 +618,33 @@ Non-Conditional Control Statements
                         and hence the wait / notify is always
                         available no extra cost.
 
+
+
+        Assignemtn - ContactBook
+        --------------------------------------------
+
+        develop a go lang console basd application to manage the contact records.
+
+                Contact
+                        mobile          must be unique
+                        first name
+                        last name
+                        email
+
+                The app must be a menu driven app :
+                        1. Creating a contact
+                        2. List all contacts
+                        3. Delete a contact
+                        4. sort contacts by first name
+                        5. sort contacts by last name
+                        6. sort contacts by mobile
+                        7. quit
+
+                the contact must be maintained in a arrray / map / list (your choice)
+                that lsit / map / array mus tbe writtne into a file before termianting the app
+                and must be read in to the memory at the loading time of the app.
+
+
         Go Lang Custom Packages
         ---------------------------------------
 
