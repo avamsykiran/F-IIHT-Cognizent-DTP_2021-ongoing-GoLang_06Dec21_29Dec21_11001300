@@ -1,0 +1,27 @@
+{{ define "Home" }}
+{{ template "Header"}}
+<table style="width:100%" cellpadding="20px">
+    <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Mobile</th>
+        <th>Alternate Mobile</th>
+        <th>Mail Id</th>
+        <th>Action</th>
+    </tr>
+    {{ range . }}
+    <tr>
+        <td>{{.FirstName}}</td>
+        <td>{{.LastName}}</td>
+        <td>{{.Mobile}}</td>
+        <td>{{.AlternateMobile}}</td>
+        <td>{{.MailId}}</td>
+        <td>
+            <a href="/view?id={{.ContactId}}">VIEW</a> <span>|</span>
+            <a href="/delete?id={{.ContactId}}">DELETE</a>
+        </td>
+    </tr>
+    {{ end }}
+</table>
+{{template "Footer"}}
+{{ end }}

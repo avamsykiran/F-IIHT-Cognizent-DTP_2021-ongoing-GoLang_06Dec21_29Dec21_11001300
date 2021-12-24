@@ -1,0 +1,41 @@
+{{ define "ContactForm" }}
+{{ template "Header"}}
+<form action="/add" method="POST">
+    <table>
+        <tr>
+            <td>Contact#</td>
+            <td>
+                <input type="number" name="ContactId" />
+            </td>
+        </tr>
+        <tr>
+            <td>FirstName</td>
+            <td>
+                <input type="text" name="FirstName" />
+            </td>
+        </tr>
+        <tr>
+            <td>LastName</td>
+            <td><input type="text" name="LastName" /></td>
+        </tr>
+        <tr>
+            <td>Mobile</td>
+            <td><input type="text" name="Mobile" /></td>
+        </tr>
+        <tr>
+            <td>Alternate Mobile</td>
+            <td><input type="text" name="AlternateMobile" /></td>
+        </tr>
+        <tr>
+            <td>Mail Id</td>
+            <td><input type="text" name="MailId" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button>Save</button>
+            </td>
+        </tr>
+    </table>
+</form>
+{{template "Footer"}}
+{{ end }}

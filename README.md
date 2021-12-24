@@ -620,7 +620,7 @@ Non-Conditional Control Statements
 
 
 
-        Assignemtn - ContactBook
+        Assignment - ContactBook
         --------------------------------------------
 
         develop a go lang console basd application to manage the contact records.
