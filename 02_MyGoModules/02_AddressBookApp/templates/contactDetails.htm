@@ -1,0 +1,26 @@
+{{ define "Details" }}
+    {{ template "Header"}}   
+    <table>
+        <tr>
+            <td>FirstName</td>
+            <td><strong>{{.FirstName}}</strong>
+        </tr>
+        <tr>
+            <td>LastName</td>
+            <td><strong>{{.LastName}}</strong>
+        </tr>
+        <tr>
+            <td>Mobile</td>
+            <td><strong>{{.Mobile}}</strong>
+        </tr>
+        <tr>
+            <td>Alternate Mobile</td>
+            <td><strong>{{.AlternateMobile}}</strong>
+        </tr>
+        <tr>
+            <td>Mail Id</td>
+            <td><strong>{{.MailId}}</strong>
+        </tr>
+    </table>
+    {{template "Footer"}}
+{{ end }}

@@ -709,11 +709,14 @@ Non-Conditional Control Statements
 
                         ENV VARIABLES
 
-                                GOROOT          points to the go instalaltion directory
+                                GOROOT          points to the go instalaltion directory, points to go SDK
+                                                all the inbuilt packages are located at GOROOT
+
                                 GOPATH          point to the workspace, where
                                                         all our project lie.
 
                                                 by default /users/vamsy/go/....
+
                                 GOBIN           points to the directory where
                                                 go intall tool whall create the .exe file.
                                                         if GOPATH is not set.
@@ -722,13 +725,12 @@ Non-Conditional Control Statements
                         GOPATH\bin              expected to contain all .exe....
                         GOPATH\pkg              expected hold thrid party lib...
 
-
                         a typical workspace hirarchy
                         -----------------------------------------------------
 
-                        GOPATH=d:\MyGoWorkspace
+                        GOPATH=c:/users/vamsy/go/
 
-                        d:\MyGoWorkspace
+                        c:/users/vamsy/go/
                         -----------------------
                                 bin
                                 pkg
