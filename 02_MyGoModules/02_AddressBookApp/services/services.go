@@ -1,68 +1,93 @@
 package services
 
 import (
-	"errors"
 	"addressbook.cts.com/models"
+
+	"database/sql"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
-var contacts []models.Contact
+const GET_ALL_QRY string = "SELECT * FROM contacts"
+const GET_BY_ID_QRY string = "SELECT * FROM contacts WHERE ContactId=?"
+const INS_QRY string = "INSERT INTO contacts(FirstName,LastName,Mobile,AlternateMobile,MailId) VALUES(?,?,?,?,?)"
+const DEL_QRY string = "DELETE FROM contacts WHERE ContactId=?"
 
-func init() {
-	//the init() function in a package is executed once when the package is accessed for the first time.
-	//initialize some hypothetical data
-	contacts = []models.Contact{}
-	contacts = append(contacts, models.Contact{101, "Vamsy", "Kiran", "9052224753", "9550204753", "v.k@iiht.com"})
-	contacts = append(contacts, models.Contact{102, "Sagar", "Guru", "9948016004", "9948016664", "s@gmail.com"})
-	contacts = append(contacts, models.Contact{103, "Suseela", "Aripaka", "9052444753", "9550244753", "ss@gmail.com"})
-}
+func getConnection() *sql.DB {
 
-func indexOf(cid int) int {
-	foundAt := -1
-	for index, ct := range contacts {
-		if ct.ContactId == cid {
-			foundAt = index
-			break
-		}
+	db, err := sql.Open("mysql", "root:root@tcp(127.0.0.1:3306)/contactsdb")
+
+	if err != nil {
+		panic(err)
 	}
-	return foundAt
+
+	return db
 }
 
 func GetAllContacts() []models.Contact {
+	var contacts []models.Contact
+
+	db := getConnection()
+
+	defer db.Close()
+
+	rows, err := db.Query(GET_ALL_QRY)
+
+	if err != nil {
+		panic(err)
+	}
+
+	for rows.Next() {
+		var contact models.Contact
+
+		err := rows.Scan(&contact.ContactId, &contact.FirstName, &contact.LastName, &contact.Mobile, &contact.AlternateMobile, &contact.MailId)
+
+		if err != nil {
+			panic(err)
+		}
+
+		contacts = append(contacts, contact)
+	}
+
 	return contacts
 }
 
 func GetContactById(cid int) (models.Contact, error) {
+	var contact models.Contact
 
-	foundAt := indexOf(cid)
+	db := getConnection()
 
-	if foundAt == -1 {
-		return models.Contact{}, errors.New("element not found")
-	} else {
-		return contacts[foundAt], nil
+	defer db.Close()
+
+	row, err := db.QueryRow(GET_BY_ID_QRY, cid)
+
+	if err == nil {
+		err = row.Scan(&contact.ContactId, &contact.FirstName, &contact.LastName, &contact.Mobile, &contact.AlternateMobile, &contact.MailId)
 	}
+
+	return contact, err
 }
 
 func AddContact(contact models.Contact) {
-	contacts = append(contacts, contact)
-}
+	db := getConnection()
 
-func UpdateContact(contact models.Contact) error {
-	index := indexOf(contact.ContactId)
-	if index == -1 {
-		return errors.New("No Such Record")
-	} else {
-		contacts[index] = contact
-		return nil
+	defer db.Close()
+
+	_, err := db.Query(INS_QRY, contact.FirstName, contact.LastName, contact.Mobile, contact.AlternateMobile, contact.MailId)
+
+	if err != nil {
+		panic(err)
 	}
 }
 
 func DeleteContact(cid int) error {
-	index := indexOf(cid)
-	if index == -1 {
-		return errors.New("No Such Record")
-	} else {
-		copy(contacts[index:], contacts[index+1:])
-		contacts = contacts[:len(contacts)-1]
-		return nil
+	db := getConnection()
+
+	defer db.Close()
+
+	_, err := db.Query(DEL_QRY, cid)
+
+	if err != nil {
+		panic(err)
 	}
 }

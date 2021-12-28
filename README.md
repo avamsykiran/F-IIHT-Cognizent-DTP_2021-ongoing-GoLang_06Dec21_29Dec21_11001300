@@ -748,7 +748,44 @@ Non-Conditional Control Statements
                                  |   |-app3.go          the main package
                                  |   |-go.mod
 
+        SQL Package
+        -------------------------------------------------
 
+                RDBMS   ----- DRIVER ------   APP (golang)
+
+                database/sql
+
+                       con,err := sql.Open("drivename","database whereabouts and credits") //verify conn
+
+                       con,err := sql.Open("mysql", "username:password@tcp(127.0.0.1:3306)/databaseName")
+
+                       defer con.clsoe();
+
+                       con.Ping();      //open the connection for us...
+
+                       res,err := con.Exec("sql statement",...params)
+
+                       row,err := con.QueryRow("select staements",..params)
+                       
+                       rows,err := con.Query("select staements",..params)
+
+                       row.Scan(...............)
+
+                Postgre SQL driver
+                ==============================================
+                        
+                        driver name "postgres"
+                        go get github.com/lib/pq 
+                
+                MySQL SQL driver
+                ==============================================
+                        
+                        driver name "mysql"
+                        go get github.com/go-sql-driver/mysql
+
+
+
+        
         REST api
         ---------------------------------------------------------------
         
@@ -799,32 +836,7 @@ Non-Conditional Control Statements
                 revel run -a app-name
 
 
-        SQL Package
-        -------------------------------------------------
-
-                RDBMS   ----- DRIVER ------   APP (golang)
-
-                database/sql
-
-                       con,err := sql.Open("drivename","database whereabouts and credits") //verify conn
-
-                       defer con.clsoe();
-
-                       con.Ping();      //open the connection for us...
-
-                       res,err := con.Exec("sql statement",...params)
-
-                       row,err := con.QueryRow("select staements",..params)
-                       
-                       rows,err := con.Query("select staements",..params)
-
-                       row.Scan(...............)
-
-                Postgre SQL driver
-                ==============================================
-                        
-                        driver name "postgres"
-                        go get github.com/lib/pq
+      
 
 
 
