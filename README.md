@@ -782,9 +782,6 @@ Non-Conditional Control Statements
                         
                         driver name "mysql"
                         go get github.com/go-sql-driver/mysql
-
-
-
         
         REST api
         ---------------------------------------------------------------
@@ -799,7 +796,6 @@ Non-Conditional Control Statements
        
 
                 encoding/json            inbuilt package used for parsing json to golang objects and viceversa
-
 
                 github.com/gorilla/mux   thrid party router package to host rest api.
 

@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
-	
+
 	"addressbook.cts.com/models"
 	"addressbook.cts.com/services"
 )
@@ -50,9 +50,7 @@ func newContact(w http.ResponseWriter, r *http.Request) {
 
 func addContact(w http.ResponseWriter, r *http.Request) {
 
-	contactId, _ := strconv.Atoi(r.FormValue("ContactId"))
-
-	contact := models.Contact{contactId, r.FormValue("FirstName"), r.FormValue("LastName"), r.FormValue("Mobile"), r.FormValue("AlternateMobile"), r.FormValue("MailId")}
+	contact := models.Contact{0, r.FormValue("FirstName"), r.FormValue("LastName"), r.FormValue("Mobile"), r.FormValue("AlternateMobile"), r.FormValue("MailId")}
 
 	services.AddContact(contact)
 

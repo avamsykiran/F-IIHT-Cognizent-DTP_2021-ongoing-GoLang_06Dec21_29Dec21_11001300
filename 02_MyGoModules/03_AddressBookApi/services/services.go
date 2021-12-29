@@ -3,7 +3,7 @@ package services
 import (
 	"errors"
 
-	"addressbook.cts.com/models"
+	"addressbook-api.cts.com/models"
 
 	"database/sql"
 
